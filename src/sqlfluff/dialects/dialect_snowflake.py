@@ -1103,9 +1103,11 @@ class ConnectByClauseSegment(BaseSegment):
 
     type = "connectby_clause"
     match_grammar = Sequence(
-        "START",
-        "WITH",
-        Ref("ExpressionSegment"),
+        Sequence(
+            "START",
+            "WITH",
+            Ref("ExpressionSegment"),
+            optional=True),
         "CONNECT",
         "BY",
         Delimited(
